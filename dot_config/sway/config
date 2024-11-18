@@ -1,0 +1,206 @@
+# SETTINGS #
+# font
+font pango:IosevkaTerm NFM 12
+
+# hide borders
+hide_edge_borders both
+default_border none
+default_floating_border none
+
+# focus settings
+focus_follows_mouse no
+
+# output settings
+output DP-3 background $XDG_CONFIG_HOME/theme/wall1.jpg fill
+output DP-2 background $XDG_CONFIG_HOME/theme/wall2.jpg fill
+output DP-3 transform 90
+output DP-3 pos 0 0
+output DP-2 pos 1080 0
+
+# VARIABLES #
+# set key vars
+set $mod Mod4
+set $alt Mod1
+
+# workspace vars
+set $term "1: terminals"
+set $web "2: web"
+set $mail "3: mail client"
+set $utils "4: utilities"
+set $study "5: study"
+set $media "6: media"
+set $game "7: gaming"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# theme
+set $base00 #24283b
+set $base01 #1f2335
+set $base02 #292e42
+set $base03 #565f89
+set $base04 #a9b1d6
+set $base05 #c0caf5
+set $base06 #c0caf5
+set $base07 #c0caf5
+set $base08 #f7768e
+set $base09 #ff9e64
+set $base0A #e0af68
+set $base0B #9ece6a
+set $base0C #1abc9c
+set $base0D #41a6b5
+set $base0E #bb9af7
+set $base0F #ff007c
+
+# KEYBINDS #
+# various shortcuts
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec fuzzel
+bindsym $mod+BackSpace exec wlogout
+
+# reload and restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# change focus
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
+
+# move focused window
+bindsym $mod+Shift+left move left
+bindsym $mod+Shift+down move down
+bindsym $mod+Shift+up move up
+bindsym $mod+Shift+right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# move workspaces between monitors
+bindsym $mod+m move workspace to output right
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# workspace navigation
+bindsym $mod+1 workspace number $term
+bindsym $mod+2 workspace number $web
+bindsym $mod+3 workspace number $mail
+bindsym $mod+4 workspace number $utils
+bindsym $mod+5 workspace number $study
+bindsym $mod+6 workspace number $media
+bindsym $mod+7 workspace number $game
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $term
+bindsym $mod+Shift+2 move container to workspace number $web
+bindsym $mod+Shift+3 move container to workspace number $mail
+bindsym $mod+Shift+4 move container to workspace number $utils
+bindsym $mod+Shift+5 move container to workspace number $study
+bindsym $mod+Shift+6 move container to workspace number $media
+bindsym $mod+Shift+7 move container to workspace number $game
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# resize mode
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        bindsym left resize shrink width 10 px or 10 ppt
+        bindsym up resize grow height 10 px or 10 ppt
+        bindsym down resize shrink height 10 px or 10 ppt
+        bindsym right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# use playerctl for media control
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# control brightness with brightnessctl
+bindsym --locked XF86MonBrightnessUp exec brightnessctl s +10
+bindsym --locked XF86MonBrightnessDown exec brightnessctl s -10
+
+# take screenshots with grim
+bindsym --locked XF86ScreenSaver exec grim ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+
+# notification control
+bindsym $mod+x exec dunstctl close-all
+bindsym CTRL+BackSpace exec dunstctl history-pop
+
+# STATUS BAR #
+bar {
+font pango:IosevkaTermNFM, FontAwesome6Free 12
+    status_command /usr/bin/i3status-rs ~/.config/i3status-rust/config.toml
+    tray_output none
+    colors {
+        background $base00
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base05 $base0D $base00
+        active_workspace    $base05 $base03 $base00
+        inactive_workspace  $base03 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
+    }
+}
+# THEME #
+# mostly inactive since borders are disabled
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
+# APPS #
+# workspace assignments
+assign [app_id="kitty"] $term
+assign [app_id="firefox"] $web
+assign [app_id="thunderbird"] $mail
+assign [app_id="protonvpn-app"] $utils
+assign [app_id="solaar"] $utils
+assign [app_id="anki"] $study
+assign [app_id="org.pwmt.zathura"] $study
+assign [app_id="mpv"] $media
+assign [class="steam"] $game
+
+for_window [app_id="mpv"] fullscreen toggle
+for_window [app_id="protonvpn-app"] floating disable
+
+# start up
+exec udiskie &
+exec dbus-update-activation-environment --all
+exec "hydroxide imap &"
+exec nm-applet
+exec dunst
+exec notify-send "Welcome. Complete studies, would you kindly?"
+exec xrandr --output DP-2 --primary
+
+exec kitty
+exec firefox
+exec thunderbird
+

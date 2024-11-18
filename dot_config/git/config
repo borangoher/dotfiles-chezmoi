@@ -1,0 +1,7 @@
+[user]
+	email = borangoher@proton.me
+	name = boran
+[commit]
+  template = /home/boran/.config/git/.git-commit-template
+[pull]
+  rebase = true

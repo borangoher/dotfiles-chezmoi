@@ -1,0 +1,42 @@
+[theme]
+theme = "solarized-dark"
+
+[theme.overrides]
+idle_bg = "#24283b"
+idle_fg = "#c0caf5"
+info_bg = "#1abc9c"
+info_fg = "#24283b"
+good_bg = "#9ece6a"
+good_fg = "#24283b"
+warning_bg = "#e0af68"
+warning_fg = "#24283b"
+critical_bg = "#f7768e"
+critical_fg = "#24283b"
+
+[icons]
+icons = "awesome6"
+
+[[block]]
+block = "battery"
+device = "/sys/class/power_supply/macsmc-battery"
+missing_format = ""
+
+[[block]]
+block = "bluetooth"
+mac = "10:7C:61:27:9F:A8"
+disconnected_format = ""
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "speedtest"
+format = " ^icon_net_down $speed_down ^icon_net_up $speed_up "
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+timezone = "Europe/Istanbul"
+format = " $icon $timestamp.datetime(f:'%F %T', l:en_US) "

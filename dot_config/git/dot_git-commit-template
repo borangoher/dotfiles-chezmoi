@@ -1,0 +1,26 @@
+# Commit template inspired by Conventional Commits, using RFC 2119
+# $!{type}$?{scope}: $!{commit-message}
+# |<- maximum 50 characters  ------------------->|
+
+# $?{commit-description}
+# |<- maximum 72 characters per line ------------------------------>|
+
+# --- COMMIT END ---
+# Type MUST be one of
+#    feat     (new feature)
+#    fix      (bug fix)
+#    chore    (catch-all for other types of commits)
+# --------------------
+# Additional Rules:
+#   - Subject line MUST be capitalized.
+#   - Subject line MUST in imperative form.
+#   - Subject line MUST NOT end with punctuation.
+#   - Subject and description lines MUST be separated
+#   by a blank line.
+#   - Type MUST be followed by a '!' if the commit includes
+#   a breaking change.
+#   - If the commit includes a breaking change, the description
+#   MUST contain an explanation of the breaking change, prefixed
+#   with 'BREAKING CHANGE:'
+#   - Scope MUST be enclosed by parantheses
+# --------------------
