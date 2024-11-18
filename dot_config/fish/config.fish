@@ -12,7 +12,6 @@ set -x VISUAL nvim
 
 # custom dirs
 set -x REPOS "$HOME/repos"
-set -x DOTFILES "$REPOS/dotfiles"
 
 # fzf and ripgrep
 set -x FZF_DEFAULT_COMMAND "rg --files --hidden --glob '!.git'"
