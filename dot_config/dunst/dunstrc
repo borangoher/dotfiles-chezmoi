@@ -1,0 +1,48 @@
+[global]
+    follow = keyboard
+
+    enable_posix_regex = true
+
+    width = 300
+    height = (5, 30)
+    offset = 10x10
+    origin = top-right
+
+    indicate_hidden = false
+
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    frame_width = 1
+
+    idle_threshold = 999
+
+    font = IosevkaTerm NFM 12
+
+    icon_position = left
+    alignment = center
+
+    sticky_history = true
+
+    browser = /usr/bin/firefox -new-tab
+
+    frame_color = "#c0caf5"
+    separator_color = "#c0caf5"
+
+[base16_low]
+    msg_urgency = "low"
+    background = "#1f2335"
+    foreground = "#565f89"
+    timeout = 10
+
+[base16_normal]
+    msg_urgency = "normal"
+    background = "#292e42"
+    foreground = "#c0caf5"
+    timeout = 15
+
+[base16_critical]
+    msg_urgency = "critical"
+    background = "#f7768e"
+    foreground = "#c0caf5"
+    timeout = 30
