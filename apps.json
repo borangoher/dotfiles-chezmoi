@@ -1,0 +1,72 @@
+{
+  "system": {
+    "essential": ["man", "man-pages", "fuse2", "dkms"],
+    "network": ["openssh", "iwd", "dhcpcd"],
+    "tools": [
+      "udiskie",
+      "efibootmgr",
+      "zip",
+      "unzip",
+      "pcmanfm",
+      "imagemagick",
+      "bluetui",
+      "impala",
+      "grim",
+      "mise",
+      "getnf"
+    ],
+    "bluetooth": ["bluez", "bluez-utils"],
+    "compatibility": ["solaar", "hydroxide", "gnome-keychain", "seahorse"],
+    "media": ["mpv", "zathura-pdf-mupdf"],
+    "fonts": [
+      "noto-fonts",
+      "noto-fonts-cjk",
+      "noto-fonts-emoji",
+      "noto-fonts-extra",
+      "ttf-font-awesome",
+      "ttf-iosevkaterm-nerd"
+    ],
+    "notifier": ["libnotify", "dunst"],
+    "wayland": ["wl-clipboard", "wlogout", "fuzzel", "keyd"],
+    "wm": ["sway", "swayimg", "swaybg", "i3status-rust"],
+    "sound": [
+      "alsa-utils",
+      "alsa-firmware",
+      "pipewire",
+      "pipewire-alsa",
+      "pipewire-audio",
+      "pipewire-pulse",
+      "wireplumber"
+    ],
+    "other": ["brightnessctl", "playerctl"],
+    "arch": ["yay"]
+  },
+  "apps": [
+    "firefox",
+    "1password",
+    "anki",
+    "thunderbird",
+    "proton-vpn-gtk-app",
+    "hledger-bin"
+  ],
+  "programming": {
+    "term": ["kitty"],
+    "shell": ["starship", "fish"],
+    "git": ["git"],
+    "yaml": ["yaml-language-server"],
+    "md": ["mdformat", "markdownlint"],
+    "js": ["npm", "nvm", "eslint_d", "prettierd"],
+    "css": ["stylelint", "rustywind"],
+    "html": ["tidy"],
+    "python": [
+      "python-black",
+      "python-pip",
+      "python-pipenv",
+      "python-pylint",
+      "python-pynvim"
+    ],
+    "cpp": ["cppcheck"],
+    "lua": ["luarocks", "stylua"],
+    "cli": ["btop", "rsync", "neofetch", "ani-cli", "speedtest-cli"]
+  }
+}
