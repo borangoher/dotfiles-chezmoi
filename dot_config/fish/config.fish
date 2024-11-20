@@ -3,8 +3,11 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 
+# brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # path
-set -x PATH $PATH /opt/google-cloud-cli/bin
+set -x PATH $PATH /opt/google-cloud-cli/bin ~/.local/bin
 
 # default editor
 set -x EDITOR nvim
@@ -17,16 +20,13 @@ set -x REPOS "$HOME/repos"
 set -x FZF_DEFAULT_COMMAND "rg --files --hidden --glob '!.git'"
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-# hledger
-set -x LEDGER_FILE "$REPOS/hledger/.hledger.journal"
+# mise
+mise activate fish | source
 
 # starship
 set -x STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
 mkdir -p ~/.cache/starship
 starship init fish | source
-
-# mise
-mise activate fish | source
 
 function daycommit
     set formatted_date (date "+%Y-%m-%d")
