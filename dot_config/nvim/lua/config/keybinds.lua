@@ -13,20 +13,6 @@ CRemap("n", "<C-down>", "<C-w>j", "Move down")
 CRemap("n", "<C-up>", "<C-w>k", "Move up")
 CRemap("n", "<C-right>", "<C-w>l", "Move right")
 
--- CHADtree
-CRemap("n", "<leader>v", "<cmd>CHADopen<CR>", "Open CHADtree")
-CRemap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)")
-CRemap("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", "Buffer Diagnostics (Trouble)")
-CRemap("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", "Symbols (Trouble)")
-CRemap(
-	"n",
-	"<leader>cl",
-	"<cmd>Trouble lsp toggle focus=false win.position=right<CR>",
-	"LSP Definitions / references / ... (Trouble)"
-)
-CRemap("n", "<leader>xL", "<cmd>Trouble loclist toggle<CR>", "Location List (Trouble)")
-CRemap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<CR>", "Quickfix List (Trouble)")
-
 -- other.nvim
 CRemap("n", "<leader>ll", "<cmd>:Other<CR>", "Open Other")
 CRemap("n", "<leader>ltn", "<cmd>:OtherTabNew<CR>", "Open Other in New Tab")
@@ -111,3 +97,40 @@ CRemap("n", "<leader>fh", builtin.help_tags, "Telescope help tags")
 CRemap({ "n", "x", "o" }, "<Leader>s", "<Plug>(leap-forward)", "Leaf forward")
 CRemap({ "n", "x", "o" }, "<Leader>S", "<Plug>(leap-backward)", "Leap backward")
 CRemap({ "n", "x", "o" }, "<Leader>gs", "<Plug>(leap-from-window)", "Leap from window")
+
+-- nvim-spectre
+CRemap("n", "<leader>P", '<cmd>lua require("spectre").toggle()<CR>', "Toggle Spectre")
+CRemap("n", "<leader>pw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', "Search current word")
+CRemap("v", "<leader>pw", '<esc><cmd>lua require("spectre").open_visual()<CR>', "Search current word")
+CRemap(
+	"n",
+	"<leader>pp",
+	'<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+	"Search on current file"
+)
+
+-- goto-preview
+CRemap("n", "<leader>gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Open definition preview")
+CRemap("n", "<leader>gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "Open impl preview")
+CRemap("n", "<leader>gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", "Close preview windows")
+
+-- neo-tree.nvim
+CRemap("n", "<leader>n", "<cmd>:Neotree<CR>", "Open neotree")
+
+-- aerial.nvim
+CRemap("n", "<leader>a", "<cmd>AerialToggle!<CR>", "Toggle aerial")
+
+-- bufferline.nvim
+CRemap("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", "Toggle Pin")
+CRemap("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", "Delete Non-Pinned Buffers")
+CRemap("n", "<leader>br", "<Cmd>BufferLineCloseRight<CR>", "Delete Buffers to the Right")
+CRemap("n", "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", "Delete Buffers to the Left")
+CRemap("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", "Prev Buffer")
+CRemap("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", "Next Buffer")
+CRemap("n", "[b", "<cmd>BufferLineCyclePrev<cr>", "Prev Buffer")
+CRemap("n", "]b", "<cmd>BufferLineCycleNext<cr>", "Next Buffer")
+CRemap("n", "[B", "<cmd>BufferLineMovePrev<cr>", "Move Buffer Prev")
+CRemap("n", "]B", "<cmd>BufferLineMoveNext<cr>", "Move Buffer Next")
+
+-- glow.nvim
+CRemap("n", "<leader>gw", "<cmd>Glow<CR>", "Markdown preview")
