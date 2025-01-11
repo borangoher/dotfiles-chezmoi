@@ -76,7 +76,7 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # assignments ######
 ####################
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
+if.app-id = 'com.mitchellh.ghostty'
 check-further-callbacks = true
 run = 'move-node-to-workspace 1'
 
