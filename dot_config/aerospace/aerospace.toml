@@ -86,6 +86,11 @@ check-further-callbacks = true
 run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+check-further-callbacks = true
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
 if.app-id = 'ch.protonvpn.mac'
 check-further-callbacks = true
 run = 'move-node-to-workspace 3'
@@ -96,24 +101,54 @@ check-further-callbacks = true
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.systempreferences'
+if.app-id = 'com.microsoft.teams2'
 check-further-callbacks = true
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.logi.optionsplus'
-check-further-callbacks = true
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'net.ankiweb.dtop'
 check-further-callbacks = true
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.amazonaws.acvc.osx'
+check-further-callbacks = true
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+check-further-callbacks = true
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+if.app-id = 'org.pqrs.Karabiner-EventViewer'
+check-further-callbacks = true
+run = 'move-node-to-workspace 8'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+check-further-callbacks = true
+run = 'move-node-to-workspace 9'
+
+[[on-window-detected]]
+if.app-id = 'com.logi.optionsplus'
+check-further-callbacks = true
+run = 'move-node-to-workspace 9'
+
+###########################
+# monitor assignments #####
+###########################
+[workspace-to-monitor-force-assignment]
+    1 = 'secondary'
+    2 = 'main'
+    3 = 'main'
+    4 = 'secondary'
+    8 = 'main'
+    9 = 'main'
 
 ####################
 # service mode #####
 ####################
-
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
