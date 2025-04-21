@@ -5,7 +5,6 @@
                 "rules": [
                     {
                         "description": "caps activated arrow keys",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -70,7 +69,6 @@
                 ]
             },
             "name": "dhm",
-            "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "0" },
@@ -265,6 +263,7 @@
         },
         {
             "name": "def",
+            "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
         },
         {
