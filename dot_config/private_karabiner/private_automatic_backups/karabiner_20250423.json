@@ -5,6 +5,7 @@
                 "rules": [
                     {
                         "description": "caps activated arrow keys",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

@@ -3,5 +3,45 @@
 	name = boran
 [commit]
   template = /home/boran/.config/git/.git-commit-template
+  verbose = true
 [pull]
   rebase = true
+[github]
+	user = borangoher
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[help]
+  autocorrect = prompt
+[rerere]
+  enabled = true
+  autoupdate = true
+[core]
+  excludesfile = ~/.gitignore
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[core]
+  fsmonitor = true
+  untrackedCache = true
+[merge]
+  conflictstyle = zdiff3
