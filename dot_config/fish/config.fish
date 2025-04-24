@@ -26,19 +26,8 @@ mise activate fish | source
 # starship
 set -x STARSHIP_CONFIG "$XDG_CONFIG_HOME/starship/starship.toml"
 mkdir -p ~/.cache/starship
-starship init fish | source
 
-function daycommit
-    set formatted_date (date "+%Y-%m-%d")
-    git commit -am "$formatted_date"
-    git push
-end
-
-function hcommit
-    cd "$REPOS/hledger"
-    daycommit
-end
-
-if status is-interactive
+if status is-interactive; and not set -q INSIDE_EMACS
+    starship init fish | source
     eval (zellij setup --generate-auto-start fish | string collect)
 end
