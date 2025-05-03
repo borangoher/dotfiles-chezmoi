@@ -7,7 +7,7 @@ set -x XDG_DATA_HOME "$HOME/.local/share"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # path
-set -x PATH $PATH /opt/google-cloud-cli/bin ~/.local/bin
+set -x PATH $PATH /opt/google-cloud-cli/bin ~/.local/bin /Library/TeX/texbin/
 
 # default editor
 set -x EDITOR nvim

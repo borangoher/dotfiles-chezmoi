@@ -20,7 +20,6 @@
   - [[#org-modern][Org Modern]]
   - [[#org-agenda][Org Agenda]]
   - [[#org-super-agenda][Org Super Agenda]]
-  - [[#org-cv][Org CV]]
   - [[#other-org-packages][Other Org Packages]]
 - [[#evil-mode][Evil Mode]]
 - [[#projectile][Projectile]]
@@ -39,9 +38,6 @@ The following config tangles to packages.el. Mostly provides additional org-mode
   :recipe (:host github
            :repo "awth13/org-appear"))
 (package! org-super-agenda)
-(package! org-cv
-  :recipe (:host gitlab
-           :repo "Titan-C/org-cv"))
 (package! org-auto-tangle)
 (package! mixed-pitch)
 (package! org-modern)
@@ -378,23 +374,6 @@ Creates super agenda view. Super agenda shows current agenda plus some custom vi
     `(org-agenda-structure
       :inherit 'variable-pitch
       :weight bold :foreground ,(doom-color 'blue))))
-#+end_src
-
-** Org CV
-Set up AwesomeCV and ModernCV backends for writing CVs in org mode.
-
-#+begin_src emacs-lisp
-(use-package! ox-awesomecv
-  :after org
-  :config
-  (defun org-awesomecv--cventry-right-img-code (file)
-    (if file
-        (format "\\begin{wrapfigure}{r}{0.15\\textwidth}
-        \\raggedleft\\vspace{-10.0mm}
-        \\includegraphics[width=0.1\\textwidth]{%s}
-        \\end{wrapfigure}" file) "")))
-(use-package! ox-moderncv
-  :after org)
 #+end_src
 
 ** Other Org Packages

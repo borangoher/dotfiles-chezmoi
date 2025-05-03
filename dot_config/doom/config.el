@@ -260,18 +260,6 @@
       :inherit 'variable-pitch
       :weight bold :foreground ,(doom-color 'blue))))
 
-(use-package! ox-awesomecv
-  :after org
-  :config
-  (defun org-awesomecv--cventry-right-img-code (file)
-    (if file
-        (format "\\begin{wrapfigure}{r}{0.15\\textwidth}
-        \\raggedleft\\vspace{-10.0mm}
-        \\includegraphics[width=0.1\\textwidth]{%s}
-        \\end{wrapfigure}" file) "")))
-(use-package! ox-moderncv
-  :after org)
-
 (use-package! org-archive
   :after org
   :config
