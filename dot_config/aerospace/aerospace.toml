@@ -81,7 +81,7 @@ check-further-callbacks = true
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'com.gnu.Emacs'
+if.app-id = 'org.gnu.Emacs'
 check-further-callbacks = true
 run = 'move-node-to-workspace 1'
 
@@ -119,6 +119,11 @@ run = 'move-node-to-workspace 4'
 if.app-id = 'com.amazonaws.acvc.osx'
 check-further-callbacks = true
 run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'com.protonmail.bridge'
+check-further-callbacks = true
+run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'

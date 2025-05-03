@@ -1,8 +1,71 @@
+#+title: Boran's Emacs Configuration
+#+author: Boran
+#+email: borangoher@proton.me
+#+property: header-args:emacs-lisp :tangle config.el :results none
+
+* Table of Contents :TOC:
+- [[#package-declarations][Package Declarations]]
+- [[#basics][Basics]]
+  - [[#user-information][User Information]]
+  - [[#fonts][Fonts]]
+  - [[#theme][Theme]]
+  - [[#modeline][Modeline]]
+  - [[#startup][Startup]]
+  - [[#other-variables][Other Variables]]
+- [[#org-mode][Org Mode]]
+  - [[#directories][Directories]]
+  - [[#basics-1][Basics]]
+  - [[#visuals][Visuals]]
+  - [[#org-capture-templates][Org Capture Templates]]
+  - [[#org-modern][Org Modern]]
+  - [[#org-agenda][Org Agenda]]
+  - [[#org-super-agenda][Org Super Agenda]]
+  - [[#org-cv][Org CV]]
+  - [[#other-org-packages][Other Org Packages]]
+- [[#evil-mode][Evil Mode]]
+- [[#projectile][Projectile]]
+- [[#lsp][LSP]]
+- [[#treemacs][Treemacs]]
+- [[#elfeed][Elfeed]]
+- [[#mail][Mail]]
+
+* Package Declarations
+The following config tangles to packages.el. Mostly provides additional org-mode functionality.
+
+#+begin_src emacs-lisp :tangle packages.el
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
+(package! org-appear
+  :recipe (:host github
+           :repo "awth13/org-appear"))
+(package! org-super-agenda)
+(package! org-cv
+  :recipe (:host gitlab
+           :repo "Titan-C/org-cv"))
+(package! org-auto-tangle)
+(package! mixed-pitch)
+(package! org-modern)
+(package! toc-org)
+(package! nerd-icons-ibuffer)
+(package! nov)
+(package! djvu)
+#+end_src
+
+* Basics
+** User Information
+That's me!
+
+#+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Boran"
       user-mail-address "borangoher@proton.me")
+#+end_src
 
+** Fonts
+I use variants of Iosevka for everything, basically. Also nerd icons.
+
+#+begin_src emacs-lisp
 (setq doom-font (font-spec :family "IosevkaTerm Nerd Font Mono" :size 14)
       doom-variable-pitch-font (font-spec :family "IosevkaTerm Nerd Font" :size 14)
       doom-big-font (font-spec :family "IosevkaTerm Nerd Font Mono" :size 18)
@@ -11,17 +74,32 @@
 
 (after! nerd-icons-ibuffer
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+#+end_src
 
+** Theme
+The default tokyo-night. Slightly transparent Emacs window. Cool.
+
+#+begin_src emacs-lisp
 (setq doom-theme 'doom-tokyo-night)
 
 (add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+#+end_src
 
+** Modeline
+Enabling some cute modeline icons.
+
+#+begin_src emacs-lisp
 (setq doom-modeline-icon t
       doom-modeline-major-mode-icon t
       doom-modeline-lsp-icon t
       doom-modeline-enable-word-count t
       doom-modeline-major-mode-color-icon t)
+#+end_src
 
+** Startup
+More useful startup options. I don't quit Emacs frequently but still nice to have.
+
+#+begin_src emacs-lisp
 (defun my/open-org-directory ()
   "Open org-directory."
   (interactive)
@@ -61,7 +139,12 @@
 (map! :leader
       (:prefix ("f" . "file")
        :desc "Open org-directory" "O" (lambda () (interactive) (find-file org-directory))))
+#+end_src
 
+** Other Variables
+Various settings to improve defaults. All of these should be self-explanatory.
+
+#+begin_src emacs-lisp
 (setq kill-whole-line t
       delete-by-moving-to-trash t
       auto-save-default t
@@ -74,11 +157,22 @@
 (pixel-scroll-precision-mode t)
 (blink-cursor-mode t)
 (setq-default abbrev-mode t)
+#+end_src
 
+* Org Mode
+** Directories
+Set org and org-agenda location to Proton Drive org dir.
+
+#+begin_src emacs-lisp
 (setq org-directory "~/Library/CloudStorage/ProtonDrive-borangoher@proton.me-folder/org/")
 (add-hook! 'after-init-hook
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$")))
+#+end_src
 
+** Basics
+Common sense defaults like adding timestamps as well as setting up speed commands.
+
+#+begin_src emacs-lisp
 (after! org
   (setq org-hide-emphasis-markers t)
   (setq org-log-done t)
@@ -89,7 +183,12 @@
         (lambda ()
           (and (looking-at org-outline-regexp)
                (looking-back "^\**")))))
+#+end_src
 
+** Visuals
+Set up minor modes for visual clarity and use custom faces for heading levels.
+
+#+begin_src emacs-lisp
 (add-hook! org-mode :append
            #'org-appear-mode
            #'visual-line-mode
@@ -115,7 +214,12 @@
     `((org-level-5)
       :foreground ,(face-attribute 'outline-5 :foreground)
       :weight medium)))
+#+end_src
 
+** Org Capture Templates
+I define only two capture templates as I want to limit the number of entrances to my org mode system. These provide functionality for creating inbox items and taking minor notes.
+
+#+begin_src emacs-lisp
 (after! org
   (setq org-capture-templates
         `(("n" "Note" entry
@@ -127,7 +231,12 @@
            (file+headline ,(concat org-directory "/inbox.org") "Inbox Items")
            "** TODO %^{Task description}"
            :empty-lines 0))))
+#+end_src
 
+** Org Modern
+Sets up org modern for various org mode markups.
+
+#+begin_src emacs-lisp
 (use-package! org-modern
   :hook (org-mode . org-modern-mode)
   :config
@@ -159,7 +268,12 @@
     `((org-modern-radio-target org-modern-internal-target)
       :inherit 'default :foreground ,(doom-color 'blue)))
   )
+#+end_src
 
+** Org Agenda
+Configuring org agenda and custom TODO sequences. Sets up persistent agenda clock. Includes small visual adjustments (face changes etc.)
+
+#+begin_src emacs-lisp
 (use-package! org-agenda
   :config
   ;; Setting the TODO keywords
@@ -203,7 +317,12 @@
         org-columns-default-format "%50ITEM(Task) %10CLOCKSUM %16TIMESTAMP_IA"
         org-agenda-start-with-log-mode t)
   (org-clock-persistence-insinuate))
+#+end_src
 
+** Org Super Agenda
+Creates super agenda view. Super agenda shows current agenda plus some custom views. Custom views are sorted from most pressing to least. Also sets up evil bindings for super agenda. Contains a custom function that shows the title of the org file of an associated TODO item when it is displayed in super agenda view.
+
+#+begin_src emacs-lisp
 (use-package! org-super-agenda
   :after org-agenda
   :config
@@ -259,7 +378,12 @@
     `(org-agenda-structure
       :inherit 'variable-pitch
       :weight bold :foreground ,(doom-color 'blue))))
+#+end_src
 
+** Org CV
+Set up AwesomeCV and ModernCV backends for writing CVs in org mode.
+
+#+begin_src emacs-lisp
 (use-package! ox-awesomecv
   :after org
   :config
@@ -271,7 +395,12 @@
         \\end{wrapfigure}" file) "")))
 (use-package! ox-moderncv
   :after org)
+#+end_src
 
+** Other Org Packages
+Better archiving, mixed pitch, and persistent clock (although I don't use it much currently.) Also sets up auto tangle to tangle literate org files like this one.
+
+#+begin_src emacs-lisp
 (use-package! org-archive
   :after org
   :config
@@ -301,7 +430,12 @@
 (use-package! toc-org
   :after org
   :hook (org-mode . toc-org-mode))
+#+end_src
 
+* Evil Mode
+Common sense defaults as well as vim-like folding and goggles.
+
+#+begin_src emacs-lisp
 (use-package! evil
   :init
   (setq evil-move-beyond-eol t
@@ -342,7 +476,12 @@
       :background ,(doom-blend (doom-color 'yellow) (doom-color 'bg-alt) 0.25)
       :extend t)
     ))
+#+end_src
 
+* Projectile
+Projectile for project management (which I don't use much.)
+
+#+begin_src emacs-lisp
 (after! projectile
   (setq +workspaces-on-switch-project-behavior t)
 
@@ -350,13 +489,24 @@
   (defun projectile-ignored-project-function (filepath)
     "Return t if FILEPATH is within any of `projectile-ignored-projects'"
     (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects))))
+#+end_src
 
+
+* LSP
+Set up LSP UI for less annoying LSP pop-ups.
+
+#+begin_src emacs-lisp
 (use-package! lsp-ui
   :config
   (setq lsp-ui-doc-delay 2
         lsp-ui-doc-max-width 80)
   (setq lsp-signature-function 'lsp-signature-posframe))
+#+end_src
 
+* Treemacs
+Treemacs with git integration.
+
+#+begin_src emacs-lisp
 (use-package! treemacs
   :commands treemacs
   :init
@@ -367,7 +517,12 @@
   (treemacs-git-mode 'extended)
   (setq treemacs-is-never-other-window nil)
   (add-to-list 'treemacs-pre-file-insert-predicates #'treemacs-is-file-git-ignored?))
+#+end_src
 
+* Elfeed
+RSS reader configuration. Set up basic keys and web interface. Also points elfeed to the right org file.
+
+#+begin_src emacs-lisp
 (use-package! elfeed
   :commands elfeed
   :init
@@ -385,7 +540,12 @@
   :commands elfeed-web-stop)
 
 (setq rmh-elfeed-org-files (list (concat org-directory "/elfeed.org")))
+#+end_src
 
+* Mail
+Sets up mu4e with the right settings to be able to use mu and isync. Can read and send mail, updates every 2 minutes. Connection to protonmail bridge required to interface with protonmail.
+
+#+begin_src emacs-lisp
 (setq mu4e-maildir "~/.mail"
       mu4e-attachment-dir "~/Downloads")
 
@@ -402,3 +562,4 @@
 (add-load-path! "/opt/homebrew/share/emacs/site-lisp/mu4e")
 (after! gnutls
   (add-to-list 'gnutls-trustfiles (expand-file-name "~/.config/protonmail/bridge-v3/cert.pem")))
+#+end_src
