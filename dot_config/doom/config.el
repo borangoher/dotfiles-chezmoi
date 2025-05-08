@@ -331,6 +331,10 @@
       :extend t)
     ))
 
+(after! magit
+  (setq git-commit-setup-hook
+        (remove 'git-commit-setup-template-hook git-commit-setup-hook)))
+
 (after! projectile
   (setq +workspaces-on-switch-project-behavior t)
 

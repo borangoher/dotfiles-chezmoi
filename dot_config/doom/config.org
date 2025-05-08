@@ -22,6 +22,7 @@
   - [[#org-super-agenda][Org Super Agenda]]
   - [[#other-org-packages][Other Org Packages]]
 - [[#evil-mode][Evil Mode]]
+- [[#magit][Magit]]
 - [[#projectile][Projectile]]
 - [[#lsp][LSP]]
 - [[#treemacs][Treemacs]]
@@ -455,6 +456,15 @@ Common sense defaults as well as vim-like folding and goggles.
       :background ,(doom-blend (doom-color 'yellow) (doom-color 'bg-alt) 0.25)
       :extend t)
     ))
+#+end_src
+
+* Magit
+Disable using commit template with magit, it was designed for cli usage.
+
+#+begin_src emacs-lisp
+(after! magit
+  (setq git-commit-setup-hook
+        (remove 'git-commit-setup-template-hook git-commit-setup-hook)))
 #+end_src
 
 * Projectile
