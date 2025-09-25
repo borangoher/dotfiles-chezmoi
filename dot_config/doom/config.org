@@ -7,6 +7,7 @@
 - [[#package-declarations][Package Declarations]]
 - [[#basics][Basics]]
   - [[#user-information][User Information]]
+  - [[#shell][Shell]]
   - [[#fonts][Fonts]]
   - [[#theme][Theme]]
   - [[#modeline][Modeline]]
@@ -57,6 +58,16 @@ That's me!
 
 (setq user-full-name "Boran"
       user-mail-address "borangoher@proton.me")
+#+end_src
+
+** Shell
+Use bash for general shell commands while using fish for interactive terminal sessions.
+
+#+begin_src emacs-lisp
+(setq shell-file-name "/bin/bash")
+
+(setq-default vterm-shell "/opt/homebrew/bin/fish")
+(setq-default explicit-shell-file-name "/opt/homebrew/bin/fish")
 #+end_src
 
 ** Fonts
@@ -164,6 +175,7 @@ Set org and org-agenda location to Proton Drive org dir.
 (setq org-directory "~/Library/CloudStorage/ProtonDrive-borangoher@proton.me-folder/org/")
 (add-hook! 'after-init-hook
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$")))
+(setq org-archive-location (concat org-directory "archive.org::datetree/"))
 #+end_src
 
 ** Basics

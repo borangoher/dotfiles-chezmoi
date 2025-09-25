@@ -3,6 +3,11 @@
 (setq user-full-name "Boran"
       user-mail-address "borangoher@proton.me")
 
+(setq shell-file-name "/bin/bash")
+
+(setq-default vterm-shell "/opt/homebrew/bin/fish")
+(setq-default explicit-shell-file-name "/opt/homebrew/bin/fish")
+
 (setq doom-font (font-spec :family "IosevkaTerm Nerd Font Mono" :size 14)
       doom-variable-pitch-font (font-spec :family "IosevkaTerm Nerd Font" :size 14)
       doom-big-font (font-spec :family "IosevkaTerm Nerd Font Mono" :size 18)
@@ -78,6 +83,7 @@
 (setq org-directory "~/Library/CloudStorage/ProtonDrive-borangoher@proton.me-folder/org/")
 (add-hook! 'after-init-hook
   (setq org-agenda-files (directory-files-recursively org-directory "\\.org$")))
+(setq org-archive-location (concat org-directory "archive.org::datetree/"))
 
 (after! org
   (setq org-hide-emphasis-markers t)
