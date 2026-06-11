@@ -5,36 +5,34 @@
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>
-        <string>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin</string>
+        <string>/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/homebrew/bin</string>
         <key>SHELL</key>
-        <string>/usr/local/bin/dash</string>
+        <string>/bin/sh</string>
     </dict>
     <key>Label</key>
     <string>rs.kanata</string>
     <key>ProgramArguments</key>
     <array>
-        <string>sudo</string>
-        <string>{kanata_binary}</string>
+        <string>/opt/homebrew/bin/kanata</string>
         <string>--cfg</string>
-        <string>{kanata_config}</string>
+        <string>/Users/boran/.config/kanata/kanata.kbd</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <dict>
         <key>SuccessfulExit</key>
- 	     <false/>
- 	     <key>Crashed</key>
- 	     <true/>
+        <false/>
+        <key>Crashed</key>
+        <true/>
     </dict>
     <key>StandardOutPath</key>
-    <string>{stdout_log}</string>
+    <string>/private/tmp/rs.kanata.out.log</string>
     <key>StandardErrorPath</key>
-    <string>{stderr_log}</string>
+    <string>/private/tmp/rs.kanata.err.log</string>
     <key>ProcessType</key>
     <string>Interactive</string>
     <key>Nice</key>
-    <integer>-30</integer>
+    <integer>-20</integer>
 </dict>
 </plist>
-
