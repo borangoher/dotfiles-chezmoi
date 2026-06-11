@@ -1,0 +1,41 @@
+layout {
+    tab name="central editor" {
+        pane cwd="~/repos/frontend-central" command="nvim" focus=true
+    }
+    tab name="central runners" {
+        pane split_direction="vertical" {
+            pane command="npm" cwd="~/repos/frontend-central" {
+                args "run" "start"
+            }
+            pane cwd="~/repos/frontend-central"
+        }
+    }
+
+    tab name="portal editor" {
+        pane cwd="~/repos/frontend-portal" command="nvim"
+    }
+    tab name="portal runners" {
+        pane split_direction="vertical" {
+            pane command="npm" cwd="~/repos/frontend-portal" {
+                args "run" "start"
+            }
+            pane cwd="~/repos/frontend-portal"
+        }
+    }
+
+    tab name="mercury-ui editor" {
+        pane cwd="~/repos/frontend-mercury-ui" command="nvim"
+    }
+    tab name="mercury-ui runner" {
+        pane split_direction="vertical" {
+            pane command="npm" cwd="~/repos/frontend-mercury-ui" {
+                args "run" "storybook"
+            }
+            pane cwd="~/repos/frontend-mercury-ui"
+        }
+    }
+
+    tab name="free runner" {
+        pane cwd="~/repos" command="nvim"
+    }
+}
