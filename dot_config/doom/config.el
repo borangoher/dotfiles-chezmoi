@@ -5,8 +5,8 @@
 
 (setq shell-file-name "/bin/bash")
 
-(setq-default vterm-shell "/opt/homebrew/bin/fish")
-(setq-default explicit-shell-file-name "/opt/homebrew/bin/fish")
+(setq-default vterm-shell "/bin/bash")
+(setq-default explicit-shell-file-name "/bin/bash")
 
 (setq doom-font (font-spec :family "IosevkaTerm Nerd Font Mono" :size 14)
       doom-variable-pitch-font (font-spec :family "IosevkaTerm Nerd Font" :size 14)
@@ -90,7 +90,7 @@
   (setq org-log-done t)
   (setq org-log-into-drawer t)
   (setq org-provide-todo-statistics t)
-
+  
   (setq org-use-speed-commands
         (lambda ()
           (and (looking-at org-outline-regexp)
@@ -178,7 +178,12 @@
           (sequence
            "REPEAT(e)"                    ;Repeating tasks
            "|"
-           "DONE")
+           "DONE(d)")
+          (sequence
+           "GOAL(g)"                    ;Greater objectives
+           "PROG(i)"
+           "|"
+           "DONE(d)")
           (sequence
            "HOLD(h)"                    ;Task is on hold because of me
            "PROJ(p)"                    ;Contains sub-tasks
@@ -349,11 +354,47 @@
     "Return t if FILEPATH is within any of `projectile-ignored-projects'"
     (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects))))
 
+(use-package! lsp-mode
+  :commands (lsp lsp-deferred)
+  :config
+  (lsp-enable-which-key-integration t)
+  (setopt lsp-completion-provider :none)
+  (setopt lsp-headerline-breadcrumb-enable nil)
+  (setopt lsp-javascript-suggest-complete-function-calls t)
+  (add-to-list 'lsp-disabled-clients '(typescript-mode . vue-semantic-server))
+  (add-to-list 'lsp-disabled-clients '(typescript-ts-mode . vue-semantic-server))
+  (add-to-list 'lsp-disabled-clients '(js-mode . vue-semantic-server))
+  (add-to-list 'lsp-disabled-clients '(js-ts-mode . vue-semantic-server))
+  (add-to-list 'lsp-disabled-clients '(astro-ts-mode . vue-semantic-server))
+  (add-to-list 'lsp-disabled-clients '(css-mode . vue-semantic-server))
+  (setf (alist-get 'web-mode lsp--formatting-indent-alist) 'web-mode-code-indent-offset))
+
 (use-package! lsp-ui
   :config
   (setq lsp-ui-doc-delay 2
         lsp-ui-doc-max-width 80)
   (setq lsp-signature-function 'lsp-signature-posframe))
+
+(use-package! web-mode
+  :hook
+  (web-mode . lsp-deferred)
+  (web-mode . web-mode-add-electric-pairs)
+  (web-mode . dtrt-indent-mode)
+  (web-mode . (lambda ()
+                (setq yas-after-exit-snippet-hook nil)))
+  :mode "\\.[px]?html?\\'"
+  :mode "\\.ejs\\'"
+  :mode "\\.mustache\\'"
+  :mode "\\.vue\\'"
+  :mode "\\.tmpl\\'"
+  :mode "\\.astro\\'"
+  :config
+  (setq web-mode-enable-auto-indent nil)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-script-padding 0)
+  (setq web-mode-style-padding 0))
 
 (use-package! treemacs
   :commands treemacs

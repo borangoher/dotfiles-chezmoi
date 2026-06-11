@@ -1,6 +1,23 @@
 font-family = Iosevka Nerd Font Mono
 font-size = 12
 
-theme = tokyonight
+palette = 0=#0A0A0B
+palette = 1=#2C2C2E
+palette = 2=#4A4A4D
+palette = 3=#7A7A7C
+palette = 4=#C4B5A0
+palette = 5=#FAFAF8
+palette = 6=#E8DCC8
+palette = 7=#FAFAF8
+palette = 8=#DC143C
+palette = 9=#7A6A4F
+palette = 10=#FFBF00
+palette = 11=#9CAF88
+palette = 12=#4DB8C4
+palette = 13=#3F4E7A
+palette = 14=#A67DB8
+palette = 15=#4A5034
+
+palette-generate = true
 
 macos-option-as-alt = true
