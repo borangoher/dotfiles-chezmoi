@@ -101,11 +101,6 @@ check-further-callbacks = true
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.1password.1password'
-check-further-callbacks = true
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
 if.app-id = 'com.microsoft.teams2'
 check-further-callbacks = true
 run = 'move-node-to-workspace 3'
@@ -121,19 +116,14 @@ check-further-callbacks = true
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
+if.app-id = 'me.proton.pass.electron'
+check-further-callbacks = true
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
 if.app-id = 'com.protonmail.bridge'
 check-further-callbacks = true
 run = 'move-node-to-workspace 7'
-
-[[on-window-detected]]
-if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
-check-further-callbacks = true
-run = 'move-node-to-workspace 8'
-
-[[on-window-detected]]
-if.app-id = 'org.pqrs.Karabiner-EventViewer'
-check-further-callbacks = true
-run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
@@ -153,6 +143,7 @@ run = 'move-node-to-workspace 9'
     2 = 'main'
     3 = 'main'
     4 = 'secondary'
+    5 = 'main'
     8 = 'main'
     9 = 'main'
 
