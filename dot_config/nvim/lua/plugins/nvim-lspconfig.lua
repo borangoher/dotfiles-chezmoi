@@ -26,26 +26,7 @@ return {
     end)
   end,
   config = function()
-    local coq = require("coq")
-
-    local servers = {
-      "pyright",
-      "angularls",
-      "clangd",
-      "cssls",
-      "emmet_language_server",
-      "yamlls",
-      "html",
-      "nushell",
-      "sqlls",
-      "ts_ls",
-    }
-
-    for _, server in ipairs(servers) do
-      vim.lsp.config(server, coq.lsp_ensure_capabilities({}))
-    end
-
-    vim.lsp.config("lua_ls", coq.lsp_ensure_capabilities({
+    vim.lsp.config("lua_ls", {
       on_init = function(client)
         if client.workspace_folders then
           local path = client.workspace_folders[1].name
@@ -69,8 +50,6 @@ return {
       settings = {
         Lua = {},
       },
-    }))
-
-    vim.lsp.enable(vim.list_extend(servers, { "lua_ls" }))
+    })
   end,
 }

@@ -1,9 +1,19 @@
 layout {
-    tab name="central editor" {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab name="Central Editor" {
         pane cwd="~/repos/frontend-central" command="nvim" focus=true
     }
-    tab name="central runners" {
-        pane split_direction="vertical" {
+    tab name="Central Runners" {
+        pane split_direction="horizontal" {
             pane command="npm" cwd="~/repos/frontend-central" {
                 args "run" "start"
             }
@@ -11,11 +21,11 @@ layout {
         }
     }
 
-    tab name="portal editor" {
+    tab name="Portal Editor" {
         pane cwd="~/repos/frontend-portal" command="nvim"
     }
-    tab name="portal runners" {
-        pane split_direction="vertical" {
+    tab name="Portal Runners" {
+        pane split_direction="horizontal" {
             pane command="npm" cwd="~/repos/frontend-portal" {
                 args "run" "start"
             }
@@ -23,11 +33,11 @@ layout {
         }
     }
 
-    tab name="mercury-ui editor" {
+    tab name="Mercury UI Editor" {
         pane cwd="~/repos/frontend-mercury-ui" command="nvim"
     }
-    tab name="mercury-ui runner" {
-        pane split_direction="vertical" {
+    tab name="Mercury UI Runners" {
+        pane split_direction="horizontal" {
             pane command="npm" cwd="~/repos/frontend-mercury-ui" {
                 args "run" "storybook"
             }
@@ -35,7 +45,7 @@ layout {
         }
     }
 
-    tab name="free runner" {
-        pane cwd="~/repos" command="nvim"
+    tab name="Free Runner" {
+        pane cwd="~/repos"
     }
 }

@@ -264,11 +264,11 @@ default_mode "locked"
 
 default_shell "fish"
 
-default_cwd "$HOME/repos"
+default_cwd "/Users/boran/repos"
 default_layout "default"
 
-theme_dir "$HOME/.config/theme/"
-theme "tokyo-night"
+theme_dir "/Users/boran/.config/theme"
+theme "bg-palette"
 
 mouse_mode false
 

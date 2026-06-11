@@ -1,6 +1,6 @@
 [tools]
 usage = "latest"
-node = "22"
+node = "latest"
 python = "latest"
 go = "latest"
 deno = "latest"
