@@ -1,30 +1,29 @@
+local function load_base16_file(path)
+  local expanded = vim.fn.expand(path)
+  if vim.fn.filereadable(expanded) == 0 then
+    vim.notify("base16: theme file not found: " .. expanded, vim.log.levels.WARN)
+    return {}
+  end
+  local palette = {}
+  for line in io.lines(expanded) do
+    local key, value = line:match('(base%x%x):%s*"(%x+)"')
+    if key then palette[key] = "#" .. value end
+  end
+  return palette
+end
+
 return {
 	"echasnovski/mini.nvim",
 	version = false,
+  lazy = false,
+  priority = 1000,
 	config = function()
+    require("mini.base16").setup({
+        palette = load_base16_file("~/.config/theme/bg-palette.yaml"),
+    })
 		require("mini.ai").setup()
 		require("mini.align").setup()
 		require("mini.animate").setup()
-		require("mini.base16").setup({
-			palette = {
-				base00 = "#24283b",
-				base01 = "#1f2335",
-				base02 = "#292e42",
-				base03 = "#565f89",
-				base04 = "#a9b1d6",
-				base05 = "#c0caf5",
-				base06 = "#c0caf5",
-				base07 = "#c0caf5",
-				base08 = "#f7768e",
-				base09 = "#ff9e64",
-				base0A = "#e0af68",
-				base0B = "#9ece6a",
-				base0C = "#1abc9c",
-				base0D = "#41a6b5",
-				base0E = "#bb9af7",
-				base0F = "#ff007c",
-			},
-		})
 		require("mini.basics").setup()
 		require("mini.comment").setup()
 		require("mini.cursorword").setup()
