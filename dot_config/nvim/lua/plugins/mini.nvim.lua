@@ -13,7 +13,7 @@ local function load_base16_file(path)
 end
 
 return {
-	"echasnovski/mini.nvim",
+	"nvim-mini/mini.nvim",
 	version = false,
   lazy = false,
   priority = 1000,
@@ -23,7 +23,6 @@ return {
         use_cterm = true,
     })
     vim.g.colors_name = "bg-palette"
-
 
 		require("mini.ai").setup()
 		require("mini.align").setup()
