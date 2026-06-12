@@ -20,7 +20,11 @@ return {
 	config = function()
     require("mini.base16").setup({
         palette = load_base16_file("~/.config/theme/bg-palette.yaml"),
+        use_cterm = true,
     })
+    vim.g.colors_name = "bg-palette"
+
+
 		require("mini.ai").setup()
 		require("mini.align").setup()
 		require("mini.animate").setup()
