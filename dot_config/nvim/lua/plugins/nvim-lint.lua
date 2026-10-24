@@ -1,20 +1,20 @@
 return {
   "mfussenegger/nvim-lint",
   config = function()
-    vim.env.ESLINT_D_PPID = vim.fn.getpid()
     local lint = require("lint")
     lint.linters_by_ft = {
       markdown = { "markdownlint" },
-      javascript = { "eslint_d" },
-      typescript = { "eslint_d" },
-      json = { "eslint_d" },
+      javascript = { "eslint" },
+      typescript = { "eslint" },
+      javascriptreact = { "eslint" },
+      typescriptreact = { "eslint" },
+      json = { "eslint" },
       html = { "tidy" },
       css = { "stylelint" },
       cpp = { "cppcheck" },
       yaml = { "yamllint" },
       python = { "pylint" },
       lua = { "luac" },
-      journal = { "hledger" },
     }
     vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
       callback = function()
