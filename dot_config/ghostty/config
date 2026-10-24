@@ -1,6 +1,6 @@
 font-family = Atkinson Hyperlegible Mono
 font-size = 12
 
-theme = /home/boran/.config/theme/eight-hundred.txt
+theme = /Users/boran/.config/theme/eight-hundred.txt
 
 macos-option-as-alt = true
