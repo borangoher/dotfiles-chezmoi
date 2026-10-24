@@ -35,7 +35,28 @@ return {
 		require("mini.move").setup()
 		require("mini.sessions").setup()
 		require("mini.splitjoin").setup()
-		require("mini.starter").setup()
+		local starter = require("mini.starter")
+		starter.setup({
+			items = {
+				starter.sections.sessions(5, true),
+				starter.sections.recent_files(5, false, false),
+				{
+					name = "Open org directory",
+					action = function()
+						vim.cmd.edit(vim.g.org_directory)
+					end,
+					section = "Org",
+				},
+				{
+					name = "Open org agenda (Overview)",
+					action = function()
+						require("orgmode").instance().agenda:open_by_key("o")
+					end,
+					section = "Org",
+				},
+				starter.sections.builtin_actions(),
+			},
+		})
 		require("mini.surround").setup()
 		require("mini.trailspace").setup()
 	end,

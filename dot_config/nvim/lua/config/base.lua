@@ -53,3 +53,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<Space>", "<Nop>", { noremap = true, silent = true })
+
+-- Org directory (shared by orgmode, mini.starter and keybinds)
+vim.g.org_directory = vim.fn.expand("~/Library/CloudStorage/ProtonDrive-borangoher@proton.me-folder/org/")
