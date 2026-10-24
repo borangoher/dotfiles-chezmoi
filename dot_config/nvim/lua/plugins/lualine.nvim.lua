@@ -4,6 +4,6 @@ return {
   priority = 900,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
-		theme = "bg-palette",
+		theme = "eight-hundred",
 	},
 }

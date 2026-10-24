@@ -19,10 +19,10 @@ return {
   priority = 1000,
 	config = function()
     require("mini.base16").setup({
-        palette = load_base16_file("~/.config/theme/bg-palette.yaml"),
+        palette = load_base16_file("~/.config/theme/eight-hundred.yaml"),
         use_cterm = true,
     })
-    vim.g.colors_name = "bg-palette"
+    vim.g.colors_name = "eight-hundred"
 
 		require("mini.ai").setup()
 		require("mini.align").setup()

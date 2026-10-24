@@ -1,64 +1,88 @@
+palette = "eight-hundred"
+
 format = """
-[░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
+[░▒▓](segment1)\
+[  ](bg:segment1 fg:icon_text)\
+[](bg:directory fg:segment1)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:directory bg:git)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#212736)\
+[](fg:git bg:languages)\
 $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#212736 bg:#1d2230)\
+[](fg:languages bg:time)\
 $time\
-[ ](fg:#1d2230)\
+[ ](fg:time)\
 \n$character"""
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:directory_text bg:directory"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [git_branch]
-symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+symbol = ""
+style = "bg:git"
+format = '[[ $symbol $branch ](fg:accent bg:git)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:git"
+format = '[[($all_status$ahead_behind )](fg:accent bg:git)]($style)'
 
 [nodejs]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+symbol = ""
+style = "bg:languages"
+format = '[[ $symbol ($version) ](fg:accent bg:languages)]($style)'
 
 [rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+symbol = ""
+style = "bg:languages"
+format = '[[ $symbol ($version) ](fg:accent bg:languages)]($style)'
 
 [golang]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+symbol = ""
+style = "bg:languages"
+format = '[[ $symbol ($version) ](fg:accent bg:languages)]($style)'
 
 [php]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+symbol = ""
+style = "bg:languages"
+format = '[[ $symbol ($version) ](fg:accent bg:languages)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "bg:time"
+format = '[[  $time ](fg:time_text bg:time)]($style)'
+
+[palettes.bg-palette]
+segment1 = "#C4B5A0"       # base04
+icon_text = "#0A0A0B"      # base00
+directory = "#3F4E7A"      # base0D
+directory_text = "#FAFAF8" # base05
+accent = "#4DB8C4"         # base0C
+git = "#4A4A4D"            # base02
+languages = "#3B3B3D"      # between base02 and base01
+time = "#2C2C2E"           # base01
+time_text = "#C4B5A0"      # base04
+
+[palettes.eight-hundred]
+segment1 = "#B2C0C9"       # base04
+icon_text = "#101C28"      # base00
+directory = "#8BB9EA"      # base0D
+directory_text = "#101C28" # base00
+accent = "#8BB9EA"         # base0D
+git = "#395468"            # base02
+languages = "#2A4052"      # between base02 and base01
+time = "#1C2D3C"           # base01
+time_text = "#B2C0C9"      # base04

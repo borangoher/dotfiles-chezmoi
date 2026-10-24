@@ -1,0 +1,32 @@
+{
+    --base00: #101C28;
+    --base01: #1C2D3C;
+    --base02: #395468;
+    --base03: #6B8294;
+    --base04: #B2C0C9;
+    --base05: #E9E6D9;
+    --base06: #D1D9DE;
+    --base07: #FFFFFF;
+    --base08: #F08B81;
+    --base09: #F5A97F;
+    --base0A: #F3C76C;
+    --base0B: #8ED1A3;
+    --base0C: #69D9CB;
+    --base0D: #8BB9EA;
+    --base0E: #C4A2E6;
+    --base0F: #B8936A;
+}
+// simple.css
+{
+    color-scheme: dark;
+    --bg: var(--base00);
+    --accent-bg: var(--base01);
+    --text: var(--base05);
+    --text-light: var(--base06);
+    --accent: var(--base0C);
+    --accent-hover: var(--base09);
+    --accent-text: var(--base0D);
+    --code: var(--base0A);
+    --preformatted: var(--base0F);
+    --disabled: var(--base03);
+}
