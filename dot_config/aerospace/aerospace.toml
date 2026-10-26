@@ -81,11 +81,6 @@ check-further-callbacks = true
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'org.gnu.Emacs'
-check-further-callbacks = true
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
 check-further-callbacks = true
 run = 'move-node-to-workspace 2'
@@ -117,6 +112,11 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'me.proton.pass.electron'
+check-further-callbacks = true
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'me.automattic.beeper.desktop'
 check-further-callbacks = true
 run = 'move-node-to-workspace 5'
 
