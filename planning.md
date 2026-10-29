@@ -1,9 +1,9 @@
 # Nvim setup
 
-1. Check file formatter and linter options.
-   Start with md.
-2. Add configuration for nvim-orgmode.
-3. Use lazyvim as a baseline for nvim config.
+1. Check file formatter and linter options. (COMPLETE)
+2. Add configuration for nvim-orgmode. (COMPLETE)
+3. Check confuguration for orgmode related plugins.
+4. Use lazyvim as a baseline for nvim config.
 
 # General
 
@@ -12,7 +12,13 @@
 3. Switch languages to British English where applicable.
 4. Change all fonts to AHM.
 
-# Last steps
+# System
 
 1. Use nix for dotfile management
 2. Rework bg-palette for better contrast
+3. MacOS system settings and rice (theme colors, wallpaper, etc.)
+
+# Last steps
+
+1. Create default project containing base files (git, css, license etc.)
+2. Set up MCPs for programming with agents.
