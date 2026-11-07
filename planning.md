@@ -2,7 +2,7 @@
 
 1. Check file formatter and linter options. (COMPLETE)
 2. Add configuration for nvim-orgmode. (COMPLETE)
-3. Check confuguration for orgmode related plugins.
+3. Check confuguration for orgmode related plugins. (COMPLETE)
 4. Use lazyvim as a baseline for nvim config.
 
 # General
