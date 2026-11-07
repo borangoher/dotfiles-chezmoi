@@ -1,6 +1,23 @@
 return {
 	"folke/snacks.nvim",
 	keys = {
+		-- Snacks explorer keys (LazyVim only enables one explorer extra, and neo-tree's is on)
+		{
+			"<leader>fe",
+			function()
+				Snacks.explorer({ cwd = LazyVim.root() })
+			end,
+			desc = "Explorer Snacks (root dir)",
+		},
+		{
+			"<leader>fE",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Explorer Snacks (cwd)",
+		},
+		{ "<leader>e", "<leader>fe", desc = "Explorer Snacks (root dir)", remap = true },
+		{ "<leader>E", "<leader>fE", desc = "Explorer Snacks (cwd)", remap = true },
 		{ "<leader>n", false },
 		{
 			"<leader>snn",
@@ -11,6 +28,8 @@ return {
 		},
 	},
 	opts = function(_, opts)
+		opts.explorer = opts.explorer or {}
+
 		local keys = opts.dashboard.preset.keys
 		-- Insert org entries before the Quit button
 		table.insert(keys, #keys, {
