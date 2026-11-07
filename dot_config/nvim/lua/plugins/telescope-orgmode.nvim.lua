@@ -3,9 +3,9 @@ return {
   event = "VeryLazy",
   dependencies = {
     "nvim-orgmode/orgmode",
-    "nvim-telescope/telescope.nvim",
+    "folke/snacks.nvim",
   },
   config = function()
-    require("telescope").load_extension("orgmode")
+    require("telescope-orgmode").setup({ adapter = "snacks" })
   end,
 }

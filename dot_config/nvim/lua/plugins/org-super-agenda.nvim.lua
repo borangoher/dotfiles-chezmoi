@@ -3,6 +3,9 @@ return {
   cmd = { "OrgSuperAgenda" },
   dependencies = { "nvim-orgmode/orgmode" },
   opts = {
+    keymaps = {
+      refile = "", -- needs telescope + org-telescope
+    },
     todo_states = {
       { name = "HOLD", keymap = "oh", color = "#6B8294" },
       { name = "TODO", keymap = "ot", color = "#8BB9EA" },
