@@ -15,20 +15,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Lazy.nvim configuration
 require("lazy").setup({
 	spec = {
-		-- LazyVim and its plugins (extras are tracked in lazyvim.json)
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-		-- Custom plugins and overrides
 		{ import = "plugins" },
 	},
 	defaults = {
-		-- Only LazyVim plugins are lazy-loaded by default
 		lazy = false,
-		-- Always use the latest git commit
 		version = false,
 	},
-	install = { colorscheme = { "habamax" } },
+	install = {},
 	checker = {
 		enabled = true,
 		notify = false,
